@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import api from "../services/api";
+import { Loader } from 'rsuite';
 
 interface PokemonDetails {
   id: number;
@@ -30,8 +31,8 @@ const Pokedex: React.FC = () => {
   const [pokemons, setPokemons] = useState<PokemonData[]>([]);
   const [search, setSearch] = useState("");
   const [selectedPokemon, setSelectedPokemon] = useState<PokemonDetails | null>(null);
-  const [showModal, setShowModal] = useState(false);
   const [revealing, setRevealing] = useState(false);
+  const [showModal, setShowModal] = useState <boolean>(false);
 
   useEffect(() => {
     const fetchPokemons = async () => {
@@ -352,8 +353,7 @@ setTimeout(() => {
         fontWeight: "bold",
         animation: "pulse 1s infinite",
       }}
-    >
-      Quem é esse pokemon?
+    >Carregando...
     </div>
     <div
       style={{
